@@ -1,39 +1,17 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-const name = ref('Link')
-let togle: HTMLElement | null = null;
-let circle: HTMLElement | null = null
-let checkbox: HTMLInputElement | null = null
-let background: HTMLElement | null = null
+import ComputedUser from './components/ComputedUser.vue'
+import { ref} from 'vue'
 
-onMounted(() => {
-  togle = document.querySelector(".togle_box");
-  circle = document.querySelector('.circle')
-  checkbox = document.getElementById('checkbox') as HTMLInputElement
-  background = document.querySelector("background");
-})
+const name = ref('Hello');
+
+
+
 
 
 function changeName(newName: string) {
   name.value = newName
 }
-function handleToggle() {
-  togle_boxs()
-  changeName('hello')
-}
 
-function togle_boxs() {
-  if (checkbox?.checked && circle) {
-    circle.style.left = "100px";
-    togle.style.backgroundColor = "blue"
-     name.value;
-     if (background) {
-      background.style.backgroundColor = "red"; 
-    }
-  }else{
-    circle.style.left = "0px"
-  }
-}
 
 
 </script>
@@ -43,16 +21,16 @@ function togle_boxs() {
 
   
 <template>
+<div>
+    <ComputedUser />
+  
   <div class="background_box">
     <div class="element">
       <p>{{ name }}</p>
-      <!--toogle button-->
-      <label class="togle_box" @click="handleToggle">
-        <input type="checkbox" id="checkbox" aria-label="Toggle switch" />
-        <div class="circle"></div>
-      </label>
+      <button @click="changeName('Goodbye')"> change </button>
     </div>
     </div>
+  </div>
 </template>
 
 <style scoped>
@@ -70,26 +48,4 @@ function togle_boxs() {
   justify-content: center;
 }
 
-.togle_box {
-  width: 200px;
-  height: 100px;
-  background-color: black;
-  display: block;
-  border-radius: 1000px;
-  cursor: pointer;
-  position: relative;
-}
-.circle{
-position: absolute;
-width: 80px;
-height: 80px;
-background-color: white;
-border-radius: 1000px;
-margin: 10px;
-left: 0px;
-transition: 0.5s;
-}
-input[type="checkbox"]{
-  display: none;
-}
 </style>
