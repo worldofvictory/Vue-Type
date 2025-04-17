@@ -1,25 +1,12 @@
 <script setup lang="ts">
 import ComputedUser from './components/ComputedUser.vue'
 import { ref} from 'vue'
-
 const name = ref('Hello');
-
-
-
-
-
 function changeName(newName: string) {
   name.value = newName
 }
-
-
-
 </script>
-
-
-
-
-  
+ 
 <template>
 <div>
     <ComputedUser />
